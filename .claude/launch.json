@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "docs-dev",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [".claude/devserver.py", "4174"],
+      "port": 4174
+    }
+  ]
+}

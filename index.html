@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Documentação · Scripts, Fontes Dinâmicas e Relatórios</title>
+<meta name="description" content="Portal de documentação técnica: scripts, casos de uso, funções utilitárias e tutoriais em BFC-Script e Groovy." />
+<meta name="color-scheme" content="light dark" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M9 8.5h9.5a4.5 4.5 0 0 1 4.5 4.5v10.5H12a3 3 0 0 0-3 3z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M9 8.5v14' stroke='white' stroke-width='2'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://raw.githubusercontent.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ───────────────────────── Topbar ───────────────────────── -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <button class="icon-btn topbar__menu" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <a class="brand" href="#/" aria-label="Página inicial da documentação">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 4.5h9a4 4 0 0 1 4 4V19H8a3 3 0 0 0-3 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 4.5V19" stroke="currentColor" stroke-width="1.8"/></svg>
+      </span>
+      <span class="brand__text">
+        <strong>Documentação</strong>
+        <small>Scripts &amp; Fontes Dinâmicas</small>
+      </span>
+    </a>
+
+    <button class="searchbox" id="searchTrigger" aria-label="Pesquisar na documentação">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <span>Pesquisar na documentação…</span>
+      <kbd>Ctrl</kbd><kbd>K</kbd>
+    </button>
+
+    <div class="topbar__actions">
+      <button class="icon-btn" id="searchTriggerMobile" aria-label="Pesquisar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn" id="themeToggle" aria-label="Alternar tema claro/escuro">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.4 8.4 0 1 0 20 14.2z"/></svg>
+      </button>
+      <a class="icon-btn" id="repoLink" href="https://github.com/valcaZl/Documentacao" target="_blank" rel="noopener" aria-label="Abrir repositório no GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-filled"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ───────────────────────── Layout ───────────────────────── -->
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar" aria-label="Navegação da documentação">
+    <div class="sidebar__scroll">
+      <div class="sidebar__head">
+        <span class="sidebar__title">Conteúdo</span>
+        <button class="chip-btn" id="collapseAll" title="Recolher todas as seções">Recolher</button>
+      </div>
+      <nav id="navTree" class="nav-tree">
+        <div class="skeleton-nav">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </nav>
+      <footer class="sidebar__foot">
+        <span id="repoStats" class="sidebar__stats">Carregando índice…</span>
+      </footer>
+    </div>
+  </aside>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <main class="content" id="content" tabindex="-1">
+    <div class="content__inner" id="view"></div>
+  </main>
+
+  <aside class="toc" id="tocPanel" aria-label="Nesta página">
+    <div class="toc__inner">
+      <span class="toc__title">Nesta página</span>
+      <nav id="tocList" class="toc__list"></nav>
+    </div>
+  </aside>
+</div>
+
+<!-- ───────────────────────── Paleta de busca ───────────────────────── -->
+<div class="palette" id="palette" hidden>
+  <div class="palette__backdrop" data-close-palette></div>
+  <div class="palette__panel" role="dialog" aria-modal="true" aria-label="Pesquisar na documentação">
+    <div class="palette__field">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="paletteInput" type="text" placeholder="Busque por título, pasta ou trecho do conteúdo…" autocomplete="off" spellcheck="false" />
+      <button class="chip-btn" data-close-palette>Esc</button>
+    </div>
+    <div class="palette__results" id="paletteResults"></div>
+    <div class="palette__foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+      <span><kbd>Enter</kbd> abrir</span>
+      <span><kbd>Esc</kbd> fechar</span>
+      <a class="palette__full" id="paletteFull" href="#/busca">Tela de pesquisa</a>
+      <span class="palette__index" id="paletteIndexState"></span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ───────────────────────── Libs ───────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.11/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/groovy.min.js"></script>
+
+<!-- ───────────────────────── App ───────────────────────── -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/github.js"></script>
+<script src="assets/js/markdown.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
