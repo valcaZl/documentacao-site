@@ -1,5 +1,7 @@
 # Portal de Documentação
 
+**No ar:** <https://valcazl.github.io/documentacao-site/>
+
 Site estático que lê o repositório [valcaZl/Documentacao](https://github.com/valcaZl/Documentacao)
 em tempo real e apresenta o conteúdo de cada arquivo em tela, no estilo dos portais de
 documentação técnica (sidebar com a árvore de pastas, busca por atalho, índice da página,
@@ -35,11 +37,22 @@ npx serve .
 > restringem requisições feitas a partir de `file://`. Se a lista de documentos não
 > carregar, use um dos comandos acima.
 
-## Como publicar
+## Publicação
 
-Por ser 100% estático, basta enviar a pasta para qualquer hospedagem:
+O site já está publicado no GitHub Pages a partir da branch `main` deste repositório
+([valcaZl/documentacao-site](https://github.com/valcaZl/documentacao-site)), na raiz.
+Para atualizar o que está no ar, basta enviar o commit:
 
-- **GitHub Pages** — suba os arquivos em um repositório e ative Pages na branch escolhida.
+```bash
+git push
+```
+
+O Pages reconstrói sozinho em cerca de um minuto. O arquivo `.nojekyll` impede que o
+Jekyll processe as pastas, e o conteúdo exibido continua vindo do `valcaZl/Documentacao`
+em tempo real — documento novo lá aparece no site sem precisar republicar.
+
+Por ser 100% estático, também roda em qualquer outra hospedagem:
+
 - **Netlify / Vercel / Cloudflare Pages** — arraste a pasta; não há comando de build.
 - **Servidor interno (IIS, Apache, nginx)** — copie a pasta para o diretório publicado.
 
